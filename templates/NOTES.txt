@@ -1,0 +1,25 @@
+##### VSFTPD #####
+VSFTPD has been successfully deployed!
+
+{{- if eq .Release.IsInstall true }}
+Credentials:
+Login - {{ include "ftp.credentials.username" . }}
+Password - {{ include "ftp.credentials.password" .}}
+{{ end }}
+
+In case you use Minikube, get an IP of the cluster and make a connect by using any FTP client:
+ftp://{{ coalesce .Values.vsftpd.mode.passive.address "MINIKUBE_IP:21"}}
+http://{{ .Values.ingress.hostname }}
+
+##### VSFTPD #####
+VSFTPD успішно розгорнуто!
+
+{{- if eq .Release.IsInstall true }}
+Дані для входу:
+Логін - {{ include "ftp.credentials.username" . }}
+Пароль - {{ include "ftp.credentials.password" .}}
+{{ end }}
+
+Якщо ви використовуєте Minikube, отримайте IP-адресу кластера та підключіться за допомогою будь-якого FTP-клієнта:
+ftp://{{ coalesce .Values.vsftpd.mode.passive.address "MINIKUBE_IP:21"}}
+http://{{ .Values.ingress.hostname }}
